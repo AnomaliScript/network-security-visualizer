@@ -3,11 +3,7 @@
 This project was made to be a "sandbox" in creating local networks in terms of cybersecurity to be a learning tool for my CyberPatriot Team.
 The following is a mapping of what network devices can connect to which other network devices, which the sandbox is based off of.
 
-## **Cybersecurity Network Device Map**
 
-Good call—let me add the **types of connections** (Ethernet, fiber, coax, Wi-Fi standards, etc.) to the mapping.
-
----
 
 ## **Cybersecurity Network Device Connectivity Map (with Connection Types)**
 
@@ -95,7 +91,7 @@ Good call—let me add the **types of connections** (Ethernet, fiber, coax, Wi-F
 - Access Point: **Ethernet (Cat5e/Cat6), PoE**
 - The Internet: **Depends, refer to following table for what different kinds of gateways use to do this**
 | Gateway Flavor | Input Port | Built-in "Power Up" |
-| :--- | :--- | :--- |
+| --- | --- | --- |
 | **Cable** | Coax (Copper) | DOCSIS Modem Chip |
 | **DSL** | Phone Jack (RJ11) | DSL Modem Chip |
 | **Fiber** | Fiber Optic | Internal ONT (Light-to-Digital) |
