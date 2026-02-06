@@ -90,8 +90,9 @@ The following is a mapping of what network devices can connect to which other ne
 - Printer: **Ethernet (Cat5e/Cat6)**
 - Access Point: **Ethernet (Cat5e/Cat6), PoE**
 - The Internet: **Depends, refer to following table for what different kinds of gateways use to do this**
+
 | Gateway Flavor | Input Port | Built-in "Power Up" |
-| --- | --- | --- |
+|---|---|---|
 | **Cable** | Coax (Copper) | DOCSIS Modem Chip |
 | **DSL** | Phone Jack (RJ11) | DSL Modem Chip |
 | **Fiber** | Fiber Optic | Internal ONT (Light-to-Digital) |
