@@ -1,8 +1,9 @@
 import React from 'react'
+import './Pages.css';
 
 function Settings() {
     return (
-        <div className="settings">
+        <div className="page">
             <h1>Settings</h1>
             <p>This is the settings page for Network Kitchen.</p>
         </div>

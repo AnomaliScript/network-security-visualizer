@@ -12,7 +12,7 @@ function App() {
       <div className="main-content">
         <Routes>
           <Route path="/about" element={<About />} />
-          <Route path="/sandbox" element={<Sandbox />} />
+          <Route path="/" element={<Sandbox />} />
           <Route path="/how-to-use" element={<HowToUse />} />
           <Route path="/settings" element={<Settings />} />
         </Routes>

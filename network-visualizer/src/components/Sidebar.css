@@ -1,0 +1,41 @@
+.sidebar {
+  position: fixed;
+  left: -25vw;
+  top: 0;
+  height: 100vh;
+  box-sizing: border-box;
+  width: 25vw;
+  padding: 10px;
+  overflow: visible;
+  transition: left 0.3s;
+  background: white;
+  z-index: 100;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.sidebar:hover {
+  left: 0;
+}
+
+.sidebar-content {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sidebar-arrow {
+  position: absolute;
+  right: -45px;          /* sticks out past the sidebar edge */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  padding: 5px;
+  background: white;
+  border-radius: 0 5px 5px 0;  /* rounded on the right side */
+}
+
+/* Optional: Add a subtle shadow for better visibility */
+.sidebar {
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
