@@ -1,6 +1,7 @@
 .toolbox {
     top: 0;
     display: flex;
+    justify-content: center;
     overflow-x: auto;
     gap: 10px;
     padding: 10px;
@@ -8,4 +9,24 @@
     width: 100%;
     background: #f5f5f5;
     border-bottom: 3px solid #ddd;
+}
+
+.toolbox .tb-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0%, 10%;
+    gap: 10px;
+}
+
+.toolbox button {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
 }

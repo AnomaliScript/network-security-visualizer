@@ -1,4 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
-    font: 16px/1.5 "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font: 16px/1.5 "Raleway", Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
+}
+
+.react-flow__handle {
+  width: 15px;
+  height: 15px;
+}
+
+.react-flow__handle-top {
+  top: -7.5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.react-flow__handle-bottom {
+  bottom: -7.5px;
+  left: 50%;
+  transform: translateX(-50%);
 }
