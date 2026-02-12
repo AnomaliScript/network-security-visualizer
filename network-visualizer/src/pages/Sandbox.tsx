@@ -46,12 +46,22 @@ const nodeTypes = { internet: InternetNode };
 
 // Define which device types can connect to which
 const connectionRules: Record<string, string[]> = {
-    "Router": ["Switch", "Router", "Firewall", "Server"],
-    "Switch": ["Router", "PC", "Server", "Switch"],
-    "Firewall": ["Router", "Server"],
-    "Server": ["Switch", "Router", "Firewall"],
-    "PC": ["Switch"],
-
+    "Router": ["Modem", "Switch", "Firewall", "Server", "PC", "Access Point", "Laptop", "Phone", "Tablet", "Landline"],
+    "Switch": ["PC", "Firewall", "Server", "Laptop", "Printer", "Access Point", "Switch", "Router", "Gateway"],
+    "Access Point": ["Switch", "Router", "Firewall", "Laptop", "Phone", "Tablet", "Printer", "PC", "Server"],
+    "Modem": ["Internet", "Router", "Firewall"],
+    "Gateway": ["Internet", "Switch", "Server", "PC", "Printer", "Laptop", "Phone", "Tablet", "Cell Tower"],
+    "Firewall": ["Modem", "Switch", "Server", "Router", "PC", "Access Point", "Gateway"],
+    "Server": ["Switch", "Router", "Server", "Access Point", "PC", "Firewall", "Gateway", "Printer"],
+    "Internet": ["Gateway", "Modem", "Carrier Core"],
+    "PC": ["Switch", "Router", "Printer", "Server", "Access Point", "Phone", "Firewall", "Gateway", "Laptop", "Tablet"],
+    "Laptop": ["Switch", "Router", "Printer", "PC", "Tablet", "Access Point", "Cell Tower", "Phone", "Gateway"],
+    "Phone": ["PC", "Laptop", "Router", "Access Point", "Cell Tower", "Phone", "Printer", "Gateway", "Tablet"],
+    "Tablet": ["PC", "Laptop", "Router", "Access Point", "Cell Tower", "Printer", "Gateway", "Phone"],
+    "Printer": ["Switch", "PC", "Laptop", "Server", "Access Point", "Phone", "Tablet", "Gateway"],
+    "Cell Tower": ["Carrier Core", "Phone", "Tablet", "Laptop", "Gateway", "Cell Tower"],
+    "Carrier Core": ["Cell Tower", "Internet", "Landline", "Carrier Core"],
+    "Landline": ["Carrier Core", "Landline", "Router"],
 };
 
 // Info about each device type (when it's clicked)
@@ -86,7 +96,6 @@ const edgeLabels: Record<string, string> = {
     "Switch-PC": "Ethernet",
     "Switch-Firewall": "Ethernet",
     "Switch-Server": "Ethernet",
-    "Switch-Desktop": "Ethernet",
     "Switch-Laptop": "Ethernet",
     "Switch-Printer": "Ethernet",
     "Switch-Access Point": "Ethernet/PoE",
@@ -96,9 +105,8 @@ const edgeLabels: Record<string, string> = {
     "Access Point-Switch": "Ethernet/PoE",
     "Access Point-Router": "Ethernet",
     "Access Point-Firewall": "Ethernet",
-
     "Access Point-Laptop": "Wi-Fi",
-    "Access Point-Smartphone": "Wi-Fi",
+    "Access Point-Phone": "Wi-Fi",
     "Access Point-Tablet": "Wi-Fi",
     "Access Point-Printer": "Wi-Fi",
     "Access Point-PC": "Wi-Fi",
@@ -112,13 +120,13 @@ const edgeLabels: Record<string, string> = {
     "Gateway-Internet": "Coax, Fiber, or DSL",
     "Gateway-Switch": "Ethernet",
     "Gateway-Server": "Ethernet",
-    "Gateway-Desktop": "Ethernet",
+    "Gateway-PC": "Ethernet",
     "Gateway-Printer": "Ethernet",
-
     "Gateway-Laptop": "Wi-Fi",
-    "Gateway-Smartphone": "Wi-Fi",
+    "Gateway-Phone": "Wi-Fi",
     "Gateway-Tablet": "Wi-Fi",
-    "Gateway-Cell Tower": "Cellular - if 5G/LTE Gateway flavor",
+    "Gateway-Firewall": "Ethernet",
+    "Gateway-Cell Tower": "Cellular (5G/LTE Gateway flavor)",
 
     // Firewall connections
     "Firewall-Modem": "Ethernet",
@@ -126,22 +134,81 @@ const edgeLabels: Record<string, string> = {
     "Firewall-Server": "Ethernet",
     "Firewall-Router": "Ethernet",
     "Firewall-PC": "Ethernet",
+    "Firewall-Gateway": "Ethernet",
 
     // Server connections
     "Server-Switch": "Ethernet/Fiber",
     "Server-Router": "Ethernet",
-    "Server-Another Server": "Ethernet/Fiber",
-
+    "Server-Server": "Ethernet/Fiber",
     "Server-Access Point": "Wi-Fi",
 
     // The Internet
     "Internet-Gateway": "Coax/Fiber/DSL",
     "Internet-Modem": "Coax/Fiber/DSL",
-
     "Internet-Carrier Core": "Fiber",
 
     // PC connections
-    
+    "PC-Switch": "Ethernet",
+    "PC-Router": "Ethernet",
+    "PC-Printer": "USB/Ethernet/Wi-Fi",
+    "PC-Server": "Ethernet",
+    "PC-Access Point": "Wi-Fi",
+    "PC-Phone": "Wi-Fi (Hotspot)",
+
+    // Laptop connections
+    "Laptop-Switch": "Ethernet",
+    "Laptop-Router": "Ethernet",
+    "Laptop-Printer": "USB/P2P via Bluetooth",
+    "Laptop-PC": "USB-C",
+    "Laptop-Tablet": "USB-C",
+    "Laptop-Access Point": "Wi-Fi",
+    "Laptop-Cell Tower": "Cellular - if SIM equipped",
+    "Laptop-Phone": "Wi-Fi - Hotspot",
+
+    // Phone connections
+    "Phone-PC": "USB/Lightning",
+    "Phone-Laptop": "USB/Lightning",
+    "Phone-Router": "Ethernet",
+    "Phone-Access Point": "Wi-Fi",
+    "Phone-Cell Tower": "Cellular",
+    "Phone-Phone": "P2P (Bluetooth/NFC/Wi-Fi Direct)",
+    "Phone-Printer": "P2P (Bluetooth/Wi-Fi Direct)",
+
+    // Tablet connections
+    "Tablet-PC": "USB-C/Lightning",
+    "Tablet-Laptop": "USB-C/Lightning",
+    "Tablet-Router": "Ethernet",
+    "Tablet-Access Point": "Wi-Fi",
+    "Tablet-Cell Tower": "Cellular",
+    "Tablet-Printer": "P2P (Bluetooth/Wi-Fi Direct)",
+
+    // Printer connections
+    "Printer-Switch": "Ethernet",
+    "Printer-PC": "USB/Ethernet/Wi-Fi",
+    "Printer-Laptop": "USB/P2P (Bluetooth/Wi-Fi Direct)",
+    "Printer-Server": "Ethernet",
+    "Printer-Access Point": "Wi-Fi",
+    "Printer-Phone": "P2P (Bluetooth/Wi-Fi Direct)",
+    "Printer-Tablet": "P2P (Bluetooth/Wi-Fi Direct)",
+
+    // Cell Tower connections
+    "Cell Tower-Carrier Core": "Fiber/Ethernet Backhaul",
+    "Cell Tower-Phone": "Cellular",
+    "Cell Tower-Tablet": "Cellular",
+    "Cell Tower-Laptop": "Cellular",
+    "Cell Tower-Gateway": "Cellular",
+    "Cell Tower-Cell Tower": "P2P (Microwave Link)",
+
+    // Carrier Core connections
+    "Carrier Core-Cell Tower": "Fiber",
+    "Carrier Core-Internet": "Fiber",
+    "Carrier Core-Landline": "Fiber/Copper Gateway",
+    "Carrier Core-Carrier Core": "Fiber",
+
+    // Landline connections
+    "Landline-Carrier Core": "Fiber/Copper Gateway",
+    "Landline-Landline": "Copper circuit",
+    "Landline-Router": "Ethernet (via VoIP adapter)",
 };
 
 function Sandbox() {
@@ -193,7 +260,8 @@ function Sandbox() {
             }
 
             const key = `${sourceType}-${targetType}`;
-            const label = edgeLabels[key] || `${sourceType} → ${targetType}`;
+            const key2 = `${targetType}-${sourceType}`;
+            const label = edgeLabels[key] || edgeLabels[key2] || `${sourceType} → ${targetType}`;
             setEdges((eds) => addEdge({ ...connection, label }, eds));
 
         },
