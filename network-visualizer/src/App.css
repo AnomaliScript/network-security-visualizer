@@ -5,9 +5,18 @@
     margin: 0;
 }
 
+.main-content {
+    width: 100%;
+    min-height: 100vh;
+}
+
+.sandbox-canvas .react-flow {
+  background: #0a0a1a !important;
+}
+
 .react-flow__handle {
-  width: 15px;
-  height: 15px;
+  width: 10px !important;
+  height: 10px !important;
 }
 
 .react-flow__handle-top {

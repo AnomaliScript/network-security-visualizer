@@ -8,11 +8,16 @@ const pages = [
   { path: "settings", label: "Settings" },
 ];
 
-function Links() {
+function Links({ onNavigate }: { onNavigate?: (path: string) => void }) {
   return (
     <ul className="list-group">
       {pages.map((page) => (
-        <NavLink key={page.path} to={`/${page.path}`} className="list-group-item list-group-item-action">
+        <NavLink
+          key={page.path}
+          to={`/${page.path}`}
+          className="list-group-item list-group-item-action"
+          onClick={() => onNavigate?.(`/${page.path}`)}
+        >
           {page.label}
         </NavLink>
       ))}
@@ -20,13 +25,13 @@ function Links() {
   );
 }
 
-const Sidebar = () => {
+const Sidebar = ({ onNavigate }: { onNavigate?: (path: string) => void }) => {
   return (
     <div className="sidebar">
       <span className="sidebar-arrow">&#9654;</span>
       <div className="sidebar-content">
         <h1>NetworKitchen</h1>
-        <Links />
+        <Links onNavigate={onNavigate} />
       </div>
     </div>
   )
