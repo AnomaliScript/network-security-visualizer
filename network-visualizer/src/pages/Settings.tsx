@@ -5,7 +5,7 @@ function Settings() {
     return (
         <div className="page">
             <h1>Settings</h1>
-            <p>This is the settings page for Network Kitchen.</p>
+            <p>This is the settings page for NetworKitchen.</p>
         </div>
     );
 }

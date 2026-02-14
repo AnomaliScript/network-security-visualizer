@@ -127,6 +127,7 @@ export const edgeLabels: Record<string, string> = {
     "Phone-Cell Tower": "Cellular",
     "Phone-Phone": "P2P (Bluetooth/NFC/Wi-Fi Direct)",
     "Phone-Printer": "P2P (Bluetooth/Wi-Fi Direct)",
+    "Phone-Tablet": "Wi-Fi - Hotspot",
 
     // Tablet connections
     "Tablet-PC": "USB-C/Lightning",
@@ -135,6 +136,7 @@ export const edgeLabels: Record<string, string> = {
     "Tablet-Access Point": "Wi-Fi",
     "Tablet-Cell Tower": "Cellular",
     "Tablet-Printer": "P2P (Bluetooth/Wi-Fi Direct)",
+    "Tablet-Phone": "Wi-Fi - Hotspot",
 
     // Printer connections
     "Printer-Switch": "Ethernet",
