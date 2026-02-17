@@ -30,7 +30,7 @@ const Sidebar = ({ onNavigate }: { onNavigate?: (path: string) => void }) => {
     <div className="sidebar">
       <span className="sidebar-arrow">&#9654;</span>
       <div className="sidebar-content">
-        <h1>NetworKitchen</h1>
+        <h1>NetworkSV</h1>
         <Links onNavigate={onNavigate} />
       </div>
     </div>

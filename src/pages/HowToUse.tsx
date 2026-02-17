@@ -5,8 +5,8 @@ import h2u_1 from '../assets/h2u-1.png';
 function HowToUse() {
     return (
         <div className="page">
-            <h1>How to Use NetworKitchen</h1>
-            <p>This is the how to use page for NetworKitchen.</p>
+            <h1>How to Use NetworkSV</h1>
+            <p>This is the how to use page for NetworkSV.</p>
             <img src={h2u_1} alt="Example diagram for a network involving multiple components" />
             <p>
                 There are many network devices that can be used, all of which can be found in the top bar of the Sandbox page. <br />

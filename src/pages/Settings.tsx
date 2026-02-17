@@ -1,6 +1,5 @@
 import React from 'react'
 import './Pages.css';
-import './Settings.css';
 
 interface SettingsProps {
     descEnable: boolean;
@@ -13,7 +12,7 @@ function Settings({ descEnable, setDescEnable, particlesEnabled, setParticlesEna
     return (
         <div className="page">
             <h1>Settings</h1>
-            <p>This is the settings page for NetworKitchen.</p>
+            <p>This is the settings page for NetworkSV.</p>
             <button onClick={() => setParticlesEnabled(!particlesEnabled)}>
                 Moving Background: {particlesEnabled ? 'ON' : 'OFF'}
             </button>
